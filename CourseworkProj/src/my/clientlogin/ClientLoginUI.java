@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package my.clientlogin;
+import java.awt.Color;
+import java.io.*;
+import java.net.URL;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -30,10 +35,11 @@ public class ClientLoginUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
         usernameInput = new javax.swing.JTextField();
-        passwordInput = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         submitLogin = new javax.swing.JButton();
+        passwordInput = new javax.swing.JPasswordField();
+        welcomeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,21 +53,23 @@ public class ClientLoginUI extends javax.swing.JFrame {
             }
         });
 
-        passwordInput.setPreferredSize(new java.awt.Dimension(90, 25));
-        passwordInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordInputActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Username");
 
         jLabel2.setText("Password");
 
+        submitLogin.setBackground(new java.awt.Color(7, 138, 59));
+        submitLogin.setForeground(new java.awt.Color(240, 240, 240));
         submitLogin.setText("Login");
         submitLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitLoginActionPerformed(evt);
+            }
+        });
+
+        passwordInput.setPreferredSize(new java.awt.Dimension(90, 25));
+        passwordInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordInputActionPerformed(evt);
             }
         });
 
@@ -70,16 +78,6 @@ public class ClientLoginUI extends javax.swing.JFrame {
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(passwordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(loginPanelLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(submitLogin)
                 .addContainerGap(128, Short.MAX_VALUE))
@@ -87,22 +85,37 @@ public class ClientLoginUI extends javax.swing.JFrame {
                 .addGap(134, 134, 134)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(usernameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(usernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(submitLogin)
                 .addContainerGap())
         );
+
+        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeLabel.setText("Welcome!");
+        welcomeLabel.setMaximumSize(new java.awt.Dimension(150, 14));
+        welcomeLabel.setPreferredSize(new java.awt.Dimension(200, 14));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,12 +123,18 @@ public class ClientLoginUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(118, 118, 118))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(118, 118, 118))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,30 +142,81 @@ public class ClientLoginUI extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordInputActionPerformed
-
     private void submitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLoginActionPerformed
-        new mainMenuUI().setVisible(true);
-        setVisible(false); //you can't see me!
+        //sets file path (usernames and passwords in the same folder)
+        String file_nameUser="usernames.txt";
+        String file_namePass="passwords.txt";
+
+        try {
+            //inputs string aboce into readFile 
+            readFile file = new readFile(file_nameUser);
+            String[] aryLines = file.openFile(); 
+            //and sets array contents in aryLines
+
+            //takes string input from input boxes (GUI)
+            String userDisplay = usernameInput.getText();
+            String passDisplay = passwordInput.getText(); //not sure why that happens
+            //various vars for later
+            boolean foundUser = false;
+            boolean foundPass = false;
+            int i=0;
+            
+            //loops for length of aryLines
+            while (i < aryLines.length) {
+                //checks if aryLines[i] is equal to user's username input
+                if (aryLines[i].equals(userDisplay)){
+                    foundUser = true;
+                    
+                    //only checks password at same index (i) if username exists
+                    readPasswordFile passfile = new readPasswordFile(file_namePass);
+                    String[] passLines = passfile.openFile();
+                    if(passLines[i].equals(passDisplay)) {
+                        foundPass = true;
+                        break;
+                        //foundUser and foundPass used later
+                    }
+                }
+                i++;
+            }
+            
+            //if username and password are both correct, next window is opened
+            if ((foundUser==true) && (foundPass==true)) {
+                new mainMenuUI().setVisible(true);
+                setVisible(false); //you can't see me!
+            } else {
+                //username and/or password are incorrect so label changes
+                welcomeLabel.setText("Username or password incorrect!");
+                welcomeLabel.setForeground(Color.RED);
+
+            }
+        }
+        catch (IOException e) {
+            //catchs any errors!
+            System.out.println( e.getMessage());
+        }
     }//GEN-LAST:event_submitLoginActionPerformed
 
     private void usernameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameInputActionPerformed
 
+    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordInputActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -177,14 +247,16 @@ public class ClientLoginUI extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel loginPanel;
-    private javax.swing.JTextField passwordInput;
+    private javax.swing.JPasswordField passwordInput;
     private javax.swing.JButton submitLogin;
     private javax.swing.JTextField usernameInput;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
