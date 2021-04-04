@@ -79,7 +79,7 @@ public class FieldDataUI extends javax.swing.JFrame {
         });
 
         plantingInput.setEditable(false);
-        plantingInput.setText("n m^2");
+        plantingInput.setText("Spring");
         plantingInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plantingInputActionPerformed(evt);
@@ -95,7 +95,7 @@ public class FieldDataUI extends javax.swing.JFrame {
         plantingLabel.setMaximumSize(new java.awt.Dimension(70, 15));
 
         harvestInput.setEditable(false);
-        harvestInput.setText("n m^2");
+        harvestInput.setText("Autumn");
         harvestInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 harvestInputActionPerformed(evt);

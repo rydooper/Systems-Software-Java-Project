@@ -181,7 +181,7 @@
         <Component class="javax.swing.JTextField" name="plantingInput">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="n m^2"/>
+            <Property name="text" type="java.lang.String" value="Spring"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="plantingInputActionPerformed"/>
@@ -212,7 +212,7 @@
         <Component class="javax.swing.JTextField" name="harvestInput">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="n m^2"/>
+            <Property name="text" type="java.lang.String" value="Autumn"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="harvestInputActionPerformed"/>
