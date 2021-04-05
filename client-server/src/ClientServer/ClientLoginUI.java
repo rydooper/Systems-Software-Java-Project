@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package ClientServer;
+
+
 import java.awt.Color;
 import java.io.*;
-import java.net.URL;
+import java.net.*;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -23,6 +25,7 @@ public class ClientLoginUI extends javax.swing.JFrame {
         initComponents();
     }
 
+	static String loginData;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,6 +154,7 @@ public class ClientLoginUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void submitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLoginActionPerformed
         //sets file path (usernames and passwords in the same folder)
         String file_nameUser="usernames.txt";
@@ -165,6 +169,11 @@ public class ClientLoginUI extends javax.swing.JFrame {
             //takes string input from input boxes (GUI)
             String userDisplay = usernameInput.getText();
             String passDisplay = passwordInput.getText(); //not sure why that happens
+			loginData = "LOGIN"+userDisplay+","+passDisplay;
+			UserClient userclient = new UserClient();
+			Thread ucThread = new Thread(userclient);
+			ucThread.start();
+
             //various vars for later
             boolean foundUser = false;
             boolean foundPass = false;
@@ -240,6 +249,8 @@ public class ClientLoginUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+		
+		
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

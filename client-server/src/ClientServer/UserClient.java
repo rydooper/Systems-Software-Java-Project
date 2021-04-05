@@ -16,6 +16,7 @@ public class UserClient implements Runnable {
             DataOutputStream outToServer = new DataOutputStream(server.getOutputStream());
 			DataInputStream inFromServer = new DataInputStream(server.getInputStream());
             outToServer.writeUTF("USR");
+			outToServer.writeUTF(ClientLoginUI.loginData);
         }
         catch (IOException error){
             System.out.println("UserClient IOError: " + error.getMessage()); 
@@ -32,9 +33,11 @@ public class UserClient implements Runnable {
 		}
     }
 	
+	/*
 	public static void main(String[] args)
 	{
 		UserClient userclient = new UserClient();
 		Thread userThread = new Thread(userclient);
-	}
+		userThread.start();
+	}*/
 }
