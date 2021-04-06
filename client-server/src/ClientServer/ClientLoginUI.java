@@ -156,49 +156,24 @@ public class ClientLoginUI extends javax.swing.JFrame {
 
 
     private void submitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLoginActionPerformed
-        //sets file path (usernames and passwords in the same folder)
-        String file_nameUser="usernames.txt";
-        String file_namePass="passwords.txt";
-
-        try {
-            //inputs string aboce into readFile 
-            readFile file = new readFile(file_nameUser);
-            String[] aryLines = file.openFile(); 
-            //and sets array contents in aryLines
 
             //takes string input from input boxes (GUI)
             String userDisplay = usernameInput.getText();
             String passDisplay = passwordInput.getText(); //not sure why that happens
-			loginData = "LOGIN"+userDisplay+","+passDisplay;
-			UserClient userclient = new UserClient();
-			Thread ucThread = new Thread(userclient);
-			ucThread.start();
+			if(!(userDisplay.isBlank() || passDisplay.isBlank())){
+				loginData = "LOGIN,"+userDisplay+","+passDisplay;
+				UserClient userclient = new UserClient();
+				Thread ucThread = new Thread(userclient);
+				ucThread.start();
+			try{
+				Thread.sleep(100);
+			}
 
-            //various vars for later
-            boolean foundUser = false;
-            boolean foundPass = false;
-            int i=0;
-            
-            //loops for length of aryLines
-            while (i < aryLines.length) {
-                //checks if aryLines[i] is equal to user's username input
-                if (aryLines[i].equals(userDisplay)){
-                    foundUser = true;
-                    
-                    //only checks password at same index (i) if username exists
-                    readPasswordFile passfile = new readPasswordFile(file_namePass);
-                    String[] passLines = passfile.openFile();
-                    if(passLines[i].equals(passDisplay)) {
-                        foundPass = true;
-                        break;
-                        //foundUser and foundPass used later
-                    }
-                }
-                i++;
-            }
-            
-            //if username and password are both correct, next window is opened
-            if ((foundUser==true) && (foundPass==true)) {
+			catch(InterruptedException ie){
+				System.out.println(ie.getMessage());
+			};
+
+            if (UserClient.validLogin) {
                 new mainMenuUI().setVisible(true);
                 setVisible(false); //you can't see me!
             } else {
@@ -206,12 +181,15 @@ public class ClientLoginUI extends javax.swing.JFrame {
                 welcomeLabel.setText("Username or password incorrect!");
                 welcomeLabel.setForeground(Color.RED);
 
-            }
-        }
-        catch (IOException e) {
-            //catchs any errors!
-            System.out.println( e.getMessage());
-        }
+           		}
+			}
+			else{
+				welcomeLabel.setText("Username or password empty!");
+                welcomeLabel.setForeground(Color.RED);
+	
+			}
+            //if username and password are both correct, next window is opened
+			
     }//GEN-LAST:event_submitLoginActionPerformed
 
     private void usernameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameInputActionPerformed

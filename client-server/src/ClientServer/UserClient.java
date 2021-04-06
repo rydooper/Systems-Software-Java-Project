@@ -5,10 +5,11 @@ import java.io.*;
 //UNFINISHED - Currently just connects and does nothing else
 public class UserClient implements Runnable {
     
+	static boolean validLogin;
 	
     public UserClient(){
     }
-    public synchronized void SendRecieve(){
+    public synchronized void Connect(){
         try{
 			//Connects and sends identifier
             InetAddress address = InetAddress.getByName("localhost");
@@ -17,6 +18,7 @@ public class UserClient implements Runnable {
 			DataInputStream inFromServer = new DataInputStream(server.getInputStream());
             outToServer.writeUTF("USR");
 			outToServer.writeUTF(ClientLoginUI.loginData);
+			validLogin = inFromServer.readBoolean();
         }
         catch (IOException error){
             System.out.println("UserClient IOError: " + error.getMessage()); 
@@ -25,7 +27,7 @@ public class UserClient implements Runnable {
     @Override
     public void run(){
         try{
-            SendRecieve();
+            Connect();
             Thread.sleep(50);
         } 
         catch (InterruptedException e){
@@ -33,11 +35,4 @@ public class UserClient implements Runnable {
 		}
     }
 	
-	/*
-	public static void main(String[] args)
-	{
-		UserClient userclient = new UserClient();
-		Thread userThread = new Thread(userclient);
-		userThread.start();
-	}*/
 }

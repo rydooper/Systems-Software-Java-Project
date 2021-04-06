@@ -18,7 +18,6 @@ public class UserClientHandler implements Runnable {
     
 	public boolean VerifyUserLogin(String loginData) throws IOException
 	{
-		
 		String file_nameUser="usernames.txt";
         String file_namePass="passwords.txt";
 
@@ -59,11 +58,18 @@ public class UserClientHandler implements Runnable {
 				String[] receivedData = inText.split(",");
 				String identifier = receivedData[0];
 
-				if(identifier == "LOGIN"){
+				if(identifier.equals("LOGIN")){
+
 					String loginData = receivedData[1] +","+ receivedData[2]; 
-					boolean validLogin = VerifyUserLogin(loginData);
+					validLogin = VerifyUserLogin(loginData);
+
+					if(validLogin){
+						outToClient.writeBoolean(true);
+					}
+					else{
+						outToClient.writeBoolean(false);
+					}
 				}
-				
 			}
         } 
 		catch(IOException e){
