@@ -46,6 +46,7 @@ public class Server {
     }     
 	public String GenerateData(){
 		Random RandGen = new Random(); 
+		//www.w3schools.com/java/java_hashmap.asp
 		String[] Crops = {"Wheat", "Corn", "Carrots", "Potatoes", "Barley"};
 		HashMap<String, String[]> CropsData = new HashMap<>();
 		CropsData.put("Wheat", new String[] {"Autumn", "Summer"});

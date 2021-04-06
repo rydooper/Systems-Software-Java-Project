@@ -44,7 +44,6 @@ public class UserClientHandler implements Runnable {
 			}
 			i++;
 		}
-
 		return false;		
 	}
 	
