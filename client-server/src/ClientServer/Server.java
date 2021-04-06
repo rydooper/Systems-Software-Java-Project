@@ -44,5 +44,23 @@ public class Server {
             System.out.println("SERVER-ERROR: " + error.getMessage());
         }
     }     
+	public String GenerateData(){
+		Random RandGen = new Random(); 
+		String[] Crops = {"Wheat", "Corn", "Carrots", "Potatoes", "Barley"};
+		HashMap<String, String[]> CropsData = new HashMap<>();
+		CropsData.put("Wheat", new String[] {"Autumn", "Summer"});
+		CropsData.put("Corn", new String[] {"Late Spring", "Late Autumn"});
+		CropsData.put("Carrots", new String[] {"Spring", "Summer"});
+		CropsData.put("Potatoes", new String[] {"Spring", "Autumn"});
+		CropsData.put("Barley", new String[] {"Spring", "Winter"});
+
+		int area = RandGen.nextInt(10)+1;
+		String randCrop = Crops[(RandGen.nextInt(Crops.length))];
+		String sowSeason = CropsData.get(randCrop)[0];
+		String harvestSeason = CropsData.get(randCrop)[1];
+
+		String data = randCrop + "," + sowSeason + "," + harvestSeason + "," + area;
+		return data;
+	}
 }
 

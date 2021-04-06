@@ -16,7 +16,7 @@ public class WeatherStationClient implements Runnable {
 		int humidity = RandGen.nextInt(71);
 		int wind = RandGen.nextInt(61);
 		int precip = RandGen.nextInt(101);
-		String data = crop + ", "+ String.valueOf(humidity) + ", " + String.valueOf(wind) + ", " + String.valueOf(precip);
+		String data = String.valueOf(humidity) + ", " + String.valueOf(wind) + ", " + String.valueOf(precip);
 		return data;
 	}
 	

@@ -7,7 +7,6 @@ public class UserClientHandler implements Runnable {
     Socket client;
     DataOutputStream outToClient;
     DataInputStream inFromClient;
-    boolean validLogin;
 	
     public UserClientHandler(Socket _client) throws IOException{
 		System.out.println("UserHandler Active");
@@ -58,10 +57,11 @@ public class UserClientHandler implements Runnable {
 				String[] receivedData = inText.split(",");
 				String identifier = receivedData[0];
 
+				System.out.println(identifier);
 				if(identifier.equals("LOGIN")){
 
 					String loginData = receivedData[1] +","+ receivedData[2]; 
-					validLogin = VerifyUserLogin(loginData);
+					boolean validLogin = VerifyUserLogin(loginData);
 
 					if(validLogin){
 						outToClient.writeBoolean(true);
@@ -70,7 +70,11 @@ public class UserClientHandler implements Runnable {
 						outToClient.writeBoolean(false);
 					}
 				}
+				else if(identifier.equals("FIELD DATA")){
+
+				}
 			}
+
         } 
 		catch(IOException e){
 	    	System.out.println("UserHandler IOError: " + e.getMessage());

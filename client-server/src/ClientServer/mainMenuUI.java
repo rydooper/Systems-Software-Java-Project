@@ -16,6 +16,8 @@ public class mainMenuUI extends javax.swing.JFrame {
     /**
      * Creates new form mainMenuUI
      */
+	//String to be accessed by the UserClient. Used to indicate when data needs to be sent from the Client to the Sever
+	static String dataRequest = "";
     public mainMenuUI() {
         initComponents();
     }
@@ -166,8 +168,10 @@ public class mainMenuUI extends javax.swing.JFrame {
 
     private void fieldInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldInfoBtnActionPerformed
         this.dispose();
+		dataRequest = "FIELD DATA";
         FieldDataUI fieldScreen = new FieldDataUI();
         fieldScreen.setVisible(true);
+		dataRequest = "";
     }//GEN-LAST:event_fieldInfoBtnActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
