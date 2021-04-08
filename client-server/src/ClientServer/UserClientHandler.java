@@ -70,7 +70,7 @@ public class UserClientHandler implements Runnable {
 					}
 				}
 				else if(identifier.equals("FIELD DATA")){
-
+					outToClient.writeUTF(Server.GenerateFieldData());
 				}
 			}
 

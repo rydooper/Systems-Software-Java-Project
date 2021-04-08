@@ -6,7 +6,7 @@ import java.io.*;
 public class UserClient implements Runnable {
     
 	static boolean validLogin;
-	static String fieldData;
+	static String[] fieldData;
 	InetAddress address;
     Socket server;
     DataOutputStream outToServer;
@@ -35,13 +35,27 @@ public class UserClient implements Runnable {
         try{
             Connect();
             Thread.sleep(50);
+
+			String menuOption = "";
 			while(true){
 				try{
-					if(!mainMenuUI.dataRequest.isBlank()){
+					Thread.sleep(100);
+					if(mainMenuUI.buttonPressed){
 						outToServer.writeUTF(mainMenuUI.dataRequest);
-						System.out.println("not blank");
+						menuOption = mainMenuUI.dataRequest;
+						mainMenuUI.buttonPressed = false;
 					}
-					else{System.out.println("blank");}
+					else{}
+
+					if(!menuOption.isEmpty()){
+						switch(menuOption){
+							case "FIELD DATA":
+								String fieldDataString = inFromServer.readUTF();
+								fieldData = fieldDataString.split(",");
+								break;
+						}
+					}
+					
 				}
 				catch(IOException e)
 				{

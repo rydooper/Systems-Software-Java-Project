@@ -44,7 +44,8 @@ public class Server {
             System.out.println("SERVER-ERROR: " + error.getMessage());
         }
     }     
-	public String GenerateData(){
+
+	public static String GenerateFieldData(){
 		Random RandGen = new Random(); 
 		//www.w3schools.com/java/java_hashmap.asp
 		String[] Crops = {"Wheat", "Corn", "Carrots", "Potatoes", "Barley"};

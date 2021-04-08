@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/UserClient.java</file>
             <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/Server.java</file>
-            <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/ClientLoginUI.java</file>
+            <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/UserClient.java</file>
             <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/UserClientHandler.java</file>
             <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/WeatherStationHandler.java</file>
-            <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/mainMenuUI.java</file>
             <file>file:/C:/Users/angen/Documents/GitHub/refactoring/Systems-Software-Project/client-server/src/ClientServer/WeatherStationClient.java</file>
         </group>
     </open-files>

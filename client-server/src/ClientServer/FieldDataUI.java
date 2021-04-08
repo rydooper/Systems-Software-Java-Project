@@ -55,7 +55,6 @@ public class FieldDataUI extends javax.swing.JFrame {
         });
 
         cropTypeInput.setEditable(false);
-        cropTypeInput.setText("example");
         cropTypeInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cropTypeInputActionPerformed(evt);
@@ -150,14 +149,16 @@ public class FieldDataUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backBtn)
-                .addGap(43, 43, 43)
-                .addComponent(fieldTitleLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBtn)
+                        .addGap(43, 43, 43)
+                        .addComponent(fieldTitleLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 45, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +172,7 @@ public class FieldDataUI extends javax.swing.JFrame {
                         .addComponent(fieldTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,7 +185,6 @@ public class FieldDataUI extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void cropTypeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cropTypeInputActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cropTypeInputActionPerformed
 
     private void areaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaInputActionPerformed
@@ -198,6 +198,13 @@ public class FieldDataUI extends javax.swing.JFrame {
     private void plantingInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plantingInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_plantingInputActionPerformed
+
+	public void fetchFieldData(){
+		cropTypeInput.setText(UserClient.fieldData[0]);
+		areaInput.setText(UserClient.fieldData[3]);
+		plantingInput.setText(UserClient.fieldData[1]);
+		harvestInput.setText(UserClient.fieldData[2]);
+	}
 
     /**
      * @param args the command line arguments
@@ -226,25 +233,31 @@ public class FieldDataUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FieldDataUI().setVisible(true);
             }
         });
+/*	
+		areaInput.setText(UserClient.fieldData[3]);
+		plantingInput.setText(UserClient.fieldData[1]);
+		harvestInput.setText(UserClient.fieldData[2]);*/
+		
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField areaInput;
+    private static javax.swing.JTextField areaInput;
     private javax.swing.JLabel areaLabel;
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel cropLabel;
-    private javax.swing.JTextField cropTypeInput;
+    private static javax.swing.JTextField cropTypeInput;
     private javax.swing.JLabel fieldTitleLabel;
-    private javax.swing.JTextField harvestInput;
+    private static javax.swing.JTextField harvestInput;
     private javax.swing.JLabel harvestLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField plantingInput;
+    private static javax.swing.JTextField plantingInput;
     private javax.swing.JLabel plantingLabel;
     // End of variables declaration//GEN-END:variables
 }
