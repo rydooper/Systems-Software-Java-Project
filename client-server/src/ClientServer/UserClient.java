@@ -55,8 +55,11 @@ public class UserClient implements Runnable {
 								fieldData = fieldDataString.split(",");
 								break;
 
-							case "WEATHER STATION":
+							case "WEATHER STATION SIZE":
 								numWeatherStations = inFromServer.readInt();
+								break;
+
+							case "WEATHER STATION":
 								break;
 						}
 					}

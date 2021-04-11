@@ -74,8 +74,13 @@ public class UserClientHandler implements Runnable {
 					outToClient.writeUTF(Server.GenerateFieldData());
 				}
 
-				else if(identifier.equals("WEATHER STATION")){
+				else if(identifier.equals("WEATHER STATION SIZE")){
 					outToClient.writeInt(Server.wsClients.size());
+				}
+
+				else if(identifier.equals("WEATHER STATION")){
+					int WSKey = Integer.parseInt(receivedData[1]);
+					outToClient.writeUTF(Server.FetchWSData(WSKey));
 				}
 			}
 

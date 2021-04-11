@@ -67,6 +67,8 @@ public class Server {
 		return data;
 	}
 
-	//Fetch wsdata function(key)
+	public static String FetchWSData(int key){
+		//use array and key to get data
+	}
 }
 
