@@ -12,7 +12,6 @@ public class WeatherStationClient implements Runnable {
 	
 	//Generates random weather data
 	public String GenerateData(){
-		String crop = Crops[RandGen.nextInt(Crops.length)];
 		int humidity = RandGen.nextInt(71);
 		int wind = RandGen.nextInt(61);
 		int precip = RandGen.nextInt(101);
@@ -29,9 +28,9 @@ public class WeatherStationClient implements Runnable {
 			//Sends identifier to server
             outToServer.writeUTF("WS");
 			while(true){
-				System.out.println("Press any key to generate and send data");
-				System.in.read();
-				outToServer.writeUTF(GenerateData());
+				if(inFromServer.readBoolean()){
+					outToServer.writeUTF(GenerateData());
+				}
 				
 			} 
         }

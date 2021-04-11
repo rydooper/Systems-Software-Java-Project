@@ -33,21 +33,13 @@ public class mainMenuUI extends javax.swing.JFrame {
     private void initComponents() {
 
         optionsPanel = new javax.swing.JPanel();
-        stationDropBtn = new javax.swing.JComboBox<>();
         allUsrStationInfoBtn = new javax.swing.JButton();
         fieldInfoBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         menuLabel = new javax.swing.JLabel();
         LogOutBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        stationDropBtn.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        stationDropBtn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Station 1", "Station 2", "Station 3" }));
-        stationDropBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stationDropBtnActionPerformed(evt);
-            }
-        });
 
         allUsrStationInfoBtn.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
         allUsrStationInfoBtn.setText("View All User and Station Info");
@@ -69,6 +61,13 @@ public class mainMenuUI extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("View weather station(s)");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout optionsPanelLayout = new javax.swing.GroupLayout(optionsPanel);
         optionsPanel.setLayout(optionsPanelLayout);
         optionsPanelLayout.setHorizontalGroup(
@@ -80,16 +79,19 @@ public class mainMenuUI extends javax.swing.JFrame {
                         .addComponent(fieldInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(optionsPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(stationDropBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(optionsPanelLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         optionsPanelLayout.setVerticalGroup(
             optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionsPanelLayout.createSequentialGroup()
-                .addComponent(stationDropBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1)
+                .addGap(96, 96, 96)
                 .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(fieldInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,16 +116,17 @@ public class mainMenuUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogOutBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 32, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(menuLabel)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LogOutBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menuLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -140,32 +143,6 @@ public class mainMenuUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void stationDropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stationDropBtnActionPerformed
-        if (stationDropBtn.getSelectedIndex() == 0){
-            //the options of the dropdown menu are an array
-            //check the array and print the text (for debugging)
-            System.out.println("First Station Picked");
-            //for the real code pass a variable to display the station number
-            
-            //hide this form and open the station data
-            this.setVisible(false);
-            StationDataDisplayUI stationScreen = new StationDataDisplayUI();
-            stationScreen.setVisible(true);
-        }
-        else if(stationDropBtn.getSelectedIndex() == 1){
-            System.out.println("Second Station Picked");
-            this.setVisible(false);
-            StationDataDisplayUI stationScreen = new StationDataDisplayUI();
-            stationScreen.setVisible(true);
-        }
-        else if(stationDropBtn.getSelectedIndex() == 2){
-            System.out.println("Third Station Picked");
-            this.setVisible(false);
-            StationDataDisplayUI stationScreen = new StationDataDisplayUI();
-            stationScreen.setVisible(true);
-        }
-    }//GEN-LAST:event_stationDropBtnActionPerformed
 
     private void fieldInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldInfoBtnActionPerformed
         this.dispose();
@@ -197,6 +174,22 @@ public class mainMenuUI extends javax.swing.JFrame {
         AllDataUI allDataScreen = new AllDataUI();
         allDataScreen.setVisible(true);
     }//GEN-LAST:event_allUsrStationInfoBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+		this.dispose();
+		dataRequest = "WEATHER STATION";
+		buttonPressed = true;
+		StationDataDisplayUI stationScreen = new StationDataDisplayUI();
+		stationScreen.fetchNumStations();
+        stationScreen.setVisible(true);
+		try{
+			Thread.sleep(400);
+		}
+		catch(InterruptedException e){
+			System.out.println(e.getMessage());
+		}
+		dataRequest = "";
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,8 +231,8 @@ public class mainMenuUI extends javax.swing.JFrame {
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JButton allUsrStationInfoBtn;
     private javax.swing.JButton fieldInfoBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel menuLabel;
     private javax.swing.JPanel optionsPanel;
-    private javax.swing.JComboBox<String> stationDropBtn;
     // End of variables declaration//GEN-END:variables
 }

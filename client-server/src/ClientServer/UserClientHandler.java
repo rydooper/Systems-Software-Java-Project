@@ -69,8 +69,13 @@ public class UserClientHandler implements Runnable {
 						outToClient.writeBoolean(false);
 					}
 				}
+
 				else if(identifier.equals("FIELD DATA")){
 					outToClient.writeUTF(Server.GenerateFieldData());
+				}
+
+				else if(identifier.equals("WEATHER STATION")){
+					outToClient.writeInt(Server.wsClients.size());
 				}
 			}
 

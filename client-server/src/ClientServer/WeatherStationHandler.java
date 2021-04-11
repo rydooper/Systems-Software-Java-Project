@@ -7,7 +7,7 @@ public class WeatherStationHandler implements Runnable {
     Socket client;
     DataOutputStream outToClient;
     DataInputStream inFromClient;
-    
+	static String wsData;
     public WeatherStationHandler(Socket _client) throws IOException{
 		//Gets client socket and initializes data streams 
 		System.out.println("WSHandler Active");
@@ -20,8 +20,12 @@ public class WeatherStationHandler implements Runnable {
     public void run(){
 		try{
 			while(true){
+				if(Server.wsDataRequest){
+					outToClient.writeBoolean(true);	
+				}
 				String inText = inFromClient.readUTF();
-				System.out.println("WSHandler recieves message: " + inText);	
+				wsData = inText;
+
 			}    
 		} 
 		catch(IOException e){

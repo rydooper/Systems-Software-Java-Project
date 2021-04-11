@@ -7,6 +7,7 @@ public class UserClient implements Runnable {
     
 	static boolean validLogin;
 	static String[] fieldData;
+	static int numWeatherStations;
 	InetAddress address;
     Socket server;
     DataOutputStream outToServer;
@@ -52,6 +53,10 @@ public class UserClient implements Runnable {
 							case "FIELD DATA":
 								String fieldDataString = inFromServer.readUTF();
 								fieldData = fieldDataString.split(",");
+								break;
+
+							case "WEATHER STATION":
+								numWeatherStations = inFromServer.readInt();
 								break;
 						}
 					}

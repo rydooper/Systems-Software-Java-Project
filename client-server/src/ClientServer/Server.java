@@ -8,8 +8,10 @@ public class Server {
 
 	//Array lists to store current connections
     public static List<Integer> openPorts = new ArrayList<>(); 
-    private static ArrayList<WeatherStationHandler> wsClients = new ArrayList<>();
+    public static ArrayList<WeatherStationHandler> wsClients = new ArrayList<>();
     private static ArrayList<UserClientHandler> userClients = new ArrayList<>();
+	
+    static boolean wsDataRequest = false; 
     
     public static void main(String[] args) throws IOException{
         try{
@@ -64,5 +66,7 @@ public class Server {
 		String data = randCrop + "," + sowSeason + "," + harvestSeason + "," + area;
 		return data;
 	}
+
+	//Fetch wsdata function(key)
 }
 
