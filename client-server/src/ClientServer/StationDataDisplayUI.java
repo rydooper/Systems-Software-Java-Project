@@ -15,7 +15,7 @@ import java.util.*;
 public class StationDataDisplayUI extends javax.swing.JFrame {
 
 	
-	HashMap<String, String[]> WSData = new HashMap<>();
+	public static HashMap<Integer, String[]> WSData = new HashMap<>();
     /**
      * Creates new form StationDataDisplayUI
      */
@@ -214,14 +214,9 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
     }//GEN-LAST:event_graphBtnActionPerformed
 
     private void stationDropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stationDropBtnActionPerformed
-				
-
-		
-        if (stationDropBtn.getSelectedIndex() == 0){
-            //the options of the dropdown menu are an array
-            //check the array and print the text (for debugging)
-            //for the real code pass a variable to display the station number
-        }
+		Integer index = stationDropBtn.getSelectedIndex(); 
+		mainMenuUI.dataRequest = "WEATHER STATION,"+index;		
+		mainMenuUI.buttonPressed = true;
     }//GEN-LAST:event_stationDropBtnActionPerformed
 
 	public void fetchNumStations(){

@@ -11,6 +11,7 @@ public class Server {
     public static ArrayList<WeatherStationHandler> wsClients = new ArrayList<>();
     private static ArrayList<UserClientHandler> userClients = new ArrayList<>();
 	
+	private static HashMap<Integer, String> WSDataMap = new HashMap<>();
     static boolean wsDataRequest = false; 
     
     public static void main(String[] args) throws IOException{
@@ -25,6 +26,7 @@ public class Server {
 				String identifier = inFromClient.readUTF();
 		
 				if (identifier.equals("WS")){
+					WSDataMap.put(wsClients.size() + 1, inFromClient.readUTF());
 					openPorts.add(client.getPort());
 					//Creates handler for client, assigns it to a thread and then runs the thread
 					WeatherStationHandler wsHandler = new WeatherStationHandler(client);
@@ -68,8 +70,7 @@ public class Server {
 	}
 
 	public static String FetchWSData(int key){
-		//use array and key to get data
-		return "oof";
+		return WSDataMap.get(key);
 	}
 }
 

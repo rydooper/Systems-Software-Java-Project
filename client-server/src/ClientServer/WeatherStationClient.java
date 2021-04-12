@@ -21,12 +21,14 @@ public class WeatherStationClient implements Runnable {
 	
     public synchronized void Connect(){
         try{
+			String data = GenerateData();
 		    InetAddress address = InetAddress.getByName("localhost");
             Socket server = new Socket(address, 9090);
             DataOutputStream outToServer = new DataOutputStream(server.getOutputStream());
 			DataInputStream inFromServer = new DataInputStream(server.getInputStream());
 			//Sends identifier to server
             outToServer.writeUTF("WS");
+			outToServer.writeUTF(data);
 			while(true){
 				if(inFromServer.readBoolean()){
 					outToServer.writeUTF(GenerateData());

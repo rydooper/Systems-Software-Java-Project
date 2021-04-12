@@ -59,6 +59,9 @@ public class UserClient implements Runnable {
 									break;
 
 								case "WEATHER STATION":
+									Integer key = inFromServer.readInt();
+									String wsData = inFromServer.readUTF();
+									StationDataDisplayUI.WSData.put(key,wsData.split(","));
 									break;
 							}
 						}
