@@ -225,6 +225,13 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
     }//GEN-LAST:event_stationDropBtnActionPerformed
 
 	public void fetchNumStations(){
+		try{
+			Thread.sleep(400);
+		}
+		catch(InterruptedException e){
+			System.out.println(e.getMessage());
+		}
+		System.out.println(UserClient.numWeatherStations);
 		for(int i = 0; i < UserClient.numWeatherStations; i++){
 			stationDropBtn.addItem("Weather station " + (i+1));
 			//WSData.put(i+1, String[] test);

@@ -176,7 +176,7 @@ public class mainMenuUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 		this.dispose();
-		dataRequest = "WEATHER STATION";
+		dataRequest = "WEATHER STATION SIZE";
 		buttonPressed = true;
 		StationDataDisplayUI stationScreen = new StationDataDisplayUI();
 		stationScreen.fetchNumStations();

@@ -45,25 +45,24 @@ public class UserClient implements Runnable {
 						outToServer.writeUTF(mainMenuUI.dataRequest);
 						menuOption = mainMenuUI.dataRequest;
 						mainMenuUI.buttonPressed = false;
-					}
-					else{}
 
-					if(!menuOption.isEmpty()){
-						switch(menuOption){
-							case "FIELD DATA":
-								String fieldDataString = inFromServer.readUTF();
-								fieldData = fieldDataString.split(",");
-								break;
+						if(!menuOption.isEmpty()){
+							switch(menuOption){
+								case "FIELD DATA":
+									String fieldDataString = inFromServer.readUTF();
+									fieldData = fieldDataString.split(",");
+									break;
 
-							case "WEATHER STATION SIZE":
-								numWeatherStations = inFromServer.readInt();
-								break;
+								case "WEATHER STATION SIZE":
+									numWeatherStations = inFromServer.readInt();
+									System.out.println(numWeatherStations);
+									break;
 
-							case "WEATHER STATION":
-								break;
+								case "WEATHER STATION":
+									break;
+							}
 						}
 					}
-					
 				}
 				catch(IOException e)
 				{
