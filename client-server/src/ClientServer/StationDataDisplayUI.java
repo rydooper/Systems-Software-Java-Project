@@ -36,7 +36,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         stationTitleLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        cropInput = new javax.swing.JTextField();
+        stationNoInput = new javax.swing.JTextField();
         cropLabel = new javax.swing.JLabel();
         humidityLabel = new javax.swing.JLabel();
         humidityInput = new javax.swing.JTextField();
@@ -62,9 +62,9 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
             }
         });
 
-        cropInput.setEditable(false);
-        cropInput.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        cropInput.setText("example");
+        stationNoInput.setEditable(false);
+        stationNoInput.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        stationNoInput.setText("example");
 
         cropLabel.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
         cropLabel.setText("Station No#:");
@@ -117,7 +117,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
                     .addComponent(precipitationInput)
                     .addComponent(windInput)
                     .addComponent(humidityInput, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                    .addComponent(cropInput))
+                    .addComponent(stationNoInput))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,7 +126,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cropLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cropInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stationNoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(humidityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,17 +215,33 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
 
     private void stationDropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stationDropBtnActionPerformed
 		Integer index = stationDropBtn.getSelectedIndex(); 
-		mainMenuUI.dataRequest = "WEATHER STATION,"+index;		
-		mainMenuUI.buttonPressed = true;
+		index++;
+		if(!(index == 0)){
+			mainMenuUI.dataRequest = "WEATHER STATION,"+index;		
+			mainMenuUI.buttonPressed = true;
+			try{
+				Thread.sleep(400);
+			}
+			catch(InterruptedException e){
+				System.out.println(e.getMessage());
+			}
+			mainMenuUI.dataRequest = "";
+			stationNoInput.setText(index.toString());
+			humidityInput.setText(WSData.get(index)[0]);
+			windInput.setText(WSData.get(index)[1]);
+			precipitationInput.setText(WSData.get(index)[2]);
+		}
+		
+		
     }//GEN-LAST:event_stationDropBtnActionPerformed
 
 	public void fetchNumStations(){
-		try{
+		/*try{
 			Thread.sleep(400);
 		}
 		catch(InterruptedException e){
 			System.out.println(e.getMessage());
-		}
+		}*/
 		System.out.println(UserClient.numWeatherStations);
 		for(int i = 0; i < UserClient.numWeatherStations; i++){
 			stationDropBtn.addItem("Weather station " + (i+1));
@@ -270,7 +286,6 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextField cropInput;
     private javax.swing.JLabel cropLabel;
     private javax.swing.JButton graphBtn;
     private javax.swing.JTextField humidityInput;
@@ -279,6 +294,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
     private javax.swing.JTextField precipitationInput;
     private javax.swing.JLabel precipitationLabel;
     private javax.swing.JComboBox<String> stationDropBtn;
+    private javax.swing.JTextField stationNoInput;
     private javax.swing.JLabel stationTitleLabel;
     private javax.swing.JTextField windInput;
     private javax.swing.JLabel windLabel;

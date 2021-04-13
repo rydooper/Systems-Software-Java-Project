@@ -28,10 +28,16 @@ public class WeatherStationClient implements Runnable {
 			DataInputStream inFromServer = new DataInputStream(server.getInputStream());
 			//Sends identifier to server
             outToServer.writeUTF("WS");
+			try{
+				Thread.sleep(400);
+			}
+			catch(InterruptedException e){
+				System.out.println(e.getMessage());
+			}
 			outToServer.writeUTF(data);
 			while(true){
 				if(inFromServer.readBoolean()){
-					outToServer.writeUTF(GenerateData());
+					outToServer.writeUTF(data);
 				}
 				
 			} 

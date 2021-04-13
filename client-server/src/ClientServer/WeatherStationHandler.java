@@ -19,6 +19,10 @@ public class WeatherStationHandler implements Runnable {
     @Override
     public void run(){
 		try{
+			wsData = inFromClient.readUTF();
+			System.out.println("WSH Data: "+wsData+ "|| wsClients size: " +Server.wsClients.size());
+			Server.WSDataMap.put(Server.wsClients.size(), wsData); 
+			/*
 			while(true){
 				if(Server.wsDataRequest){
 					outToClient.writeBoolean(true);	
@@ -26,7 +30,7 @@ public class WeatherStationHandler implements Runnable {
 				String inText = inFromClient.readUTF();
 				wsData = inText;
 
-			}    
+			}   */ 
 		} 
 		catch(IOException e){
 			System.out.println("WSHandler IOError: " + e.getMessage());

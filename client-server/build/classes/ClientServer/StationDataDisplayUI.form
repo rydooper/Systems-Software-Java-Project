@@ -121,7 +121,7 @@
                       <Component id="precipitationInput" alignment="0" max="32767" attributes="0"/>
                       <Component id="windInput" alignment="0" max="32767" attributes="0"/>
                       <Component id="humidityInput" alignment="0" pref="81" max="32767" attributes="0"/>
-                      <Component id="cropInput" max="32767" attributes="0"/>
+                      <Component id="stationNoInput" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
@@ -133,7 +133,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cropLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cropInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="stationNoInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -156,7 +156,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="cropInput">
+        <Component class="javax.swing.JTextField" name="stationNoInput">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

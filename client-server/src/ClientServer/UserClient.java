@@ -43,7 +43,8 @@ public class UserClient implements Runnable {
 					Thread.sleep(100);
 					if(mainMenuUI.buttonPressed){
 						outToServer.writeUTF(mainMenuUI.dataRequest);
-						menuOption = mainMenuUI.dataRequest;
+						String[] dataRequestParsed = mainMenuUI.dataRequest.split(",");
+						menuOption = dataRequestParsed[0]; 
 						mainMenuUI.buttonPressed = false;
 
 						if(!menuOption.isEmpty()){
