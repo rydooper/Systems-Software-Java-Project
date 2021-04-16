@@ -7,6 +7,7 @@ public class UserClientHandler implements Runnable {
     Socket client;
     DataOutputStream outToClient;
     DataInputStream inFromClient;
+	String thisUser;
 	
     public UserClientHandler(Socket _client) throws IOException{
 		System.out.println("UserHandler Active");
@@ -64,6 +65,8 @@ public class UserClientHandler implements Runnable {
 
 					if(validLogin){
 						outToClient.writeBoolean(true);
+						String[] loginDetails = loginData.split(",");		
+						thisUser = loginDetails[0];
 					}
 					else{
 						outToClient.writeBoolean(false);
@@ -84,6 +87,28 @@ public class UserClientHandler implements Runnable {
 					outToClient.writeInt(WSKey);
 					outToClient.writeUTF(Server.FetchWSData(WSKey));
 				}
+			
+				else if(identifier.equals("ADMIN INFO")){
+					boolean isAdmin = false;
+
+					String admins_file = "admins.txt";
+					readFile adminFile = new readFile(admins_file);
+
+					try{
+						String[] adminLines = adminFile.openFile();
+						for(String admin : adminLines){
+							if(admin.equals(thisUser)){
+								isAdmin = true;
+								outToClient.writeBoolean(isAdmin);
+								break;
+							}
+						}
+					}
+					catch(IOException e){
+						System.out.println(e.getMessage());
+					}
+				}
+
 			}
 
         } 

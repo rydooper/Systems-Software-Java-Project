@@ -8,6 +8,7 @@ public class UserClient implements Runnable {
 	static boolean validLogin;
 	static String[] fieldData;
 	static int numWeatherStations;
+	static boolean isAdmin;
 	InetAddress address;
     Socket server;
     DataOutputStream outToServer;
@@ -63,6 +64,10 @@ public class UserClient implements Runnable {
 									Integer key = inFromServer.readInt();
 									String wsData = inFromServer.readUTF();
 									StationDataDisplayUI.WSData.put(key,wsData.split(","));
+									break;
+
+								case "ADMIN INFO":
+									isAdmin = inFromServer.readBoolean();
 									break;
 							}
 						}

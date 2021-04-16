@@ -169,9 +169,17 @@ public class mainMenuUI extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void allUsrStationInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allUsrStationInfoBtnActionPerformed
-        this.dispose();
-        AllDataUI allDataScreen = new AllDataUI();
-        allDataScreen.setVisible(true);
+		//admin check
+		dataRequest = "ADMIN INFO";
+		buttonPressed = true;
+		if(UserClient.isAdmin){
+			this.dispose();
+        	AllDataUI allDataScreen = new AllDataUI();
+        	allDataScreen.setVisible(true);
+		}
+		else{
+			//errro
+		}
     }//GEN-LAST:event_allUsrStationInfoBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
