@@ -6,10 +6,7 @@
 package ClientServer;
 
 import java.io.IOException;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Popup;
-import javax.swing.PopupFactory;
+import javax.swing.*;
 
 /**
  *
@@ -39,14 +36,14 @@ public class mainMenuUI extends javax.swing.JFrame {
         optionsPanel = new javax.swing.JPanel();
         allUsrStationInfoBtn = new javax.swing.JButton();
         fieldInfoBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        viewWS = new javax.swing.JButton();
         menuLabel = new javax.swing.JLabel();
         LogOutBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         allUsrStationInfoBtn.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        allUsrStationInfoBtn.setText("View All User and Station Info");
+        allUsrStationInfoBtn.setText("View All User Info");
         allUsrStationInfoBtn.setMaximumSize(new java.awt.Dimension(200, 23));
         allUsrStationInfoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,10 +62,11 @@ public class mainMenuUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("View weather station(s)");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewWS.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        viewWS.setText("View weather station(s)");
+        viewWS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewWSActionPerformed(evt);
             }
         });
 
@@ -76,30 +74,28 @@ public class mainMenuUI extends javax.swing.JFrame {
         optionsPanel.setLayout(optionsPanelLayout);
         optionsPanelLayout.setHorizontalGroup(
             optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, optionsPanelLayout.createSequentialGroup()
+            .addGroup(optionsPanelLayout.createSequentialGroup()
                 .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, optionsPanelLayout.createSequentialGroup()
-                        .addContainerGap(82, Short.MAX_VALUE)
-                        .addComponent(fieldInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(optionsPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(optionsPanelLayout.createSequentialGroup()
+                        .addContainerGap(75, Short.MAX_VALUE)
+                        .addGroup(optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(viewWS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fieldInfoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
                 .addContainerGap(75, Short.MAX_VALUE))
-            .addGroup(optionsPanelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         optionsPanelLayout.setVerticalGroup(
             optionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(optionsPanelLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addGap(96, 96, 96)
-                .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(viewWS, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(fieldInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(allUsrStationInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         menuLabel.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
@@ -125,11 +121,11 @@ public class mainMenuUI extends javax.swing.JFrame {
                 .addGap(0, 32, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(menuLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogOutBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(LogOutBtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -139,9 +135,9 @@ public class mainMenuUI extends javax.swing.JFrame {
                 .addComponent(menuLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(optionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LogOutBtn)
-                .addGap(18, 18, 18))
+                .addGap(13, 13, 13))
         );
 
         pack();
@@ -201,16 +197,12 @@ public class mainMenuUI extends javax.swing.JFrame {
 		}
 		else{
 			System.out.println("not an admin, go away");
-			PopupFactory pf = new PopupFactory();
-			JFrame f = new JFrame("anything");
-			JPanel p2 = new JPanel();
-			Popup p = pf.getPopup(f, p2, 180, 180);
-			p.show();
+                        JOptionPane.showMessageDialog(null, "Only Admins have access to user information");
 		}
 		dataRequest = "";
     }//GEN-LAST:event_allUsrStationInfoBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void viewWSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewWSActionPerformed
 		this.dispose();
 		dataRequest = "WEATHER STATION SIZE";
 		buttonPressed = true;
@@ -224,7 +216,7 @@ public class mainMenuUI extends javax.swing.JFrame {
 		stationScreen.fetchNumStations();
         stationScreen.setVisible(true);
 		dataRequest = "";
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_viewWSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,8 +257,8 @@ public class mainMenuUI extends javax.swing.JFrame {
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JButton allUsrStationInfoBtn;
     private javax.swing.JButton fieldInfoBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel menuLabel;
     private javax.swing.JPanel optionsPanel;
+    private javax.swing.JButton viewWS;
     // End of variables declaration//GEN-END:variables
 }
