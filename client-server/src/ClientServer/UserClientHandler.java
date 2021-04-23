@@ -87,10 +87,16 @@ public class UserClientHandler implements Runnable {
 					outToClient.writeInt(WSKey);
 					outToClient.writeUTF(Server.FetchWSData(WSKey));
 				}
+
+				else if(identifier.equals("LOGOUT")){
+					thisUser = "";
+				}
+					
 			
 				else if(identifier.equals("ADMIN INFO")){
 					boolean isAdmin = false;
 
+					System.out.println("Current user: "+ thisUser);
 					String admins_file = "admins.txt";
 					readFile adminFile = new readFile(admins_file);
 
@@ -121,7 +127,6 @@ public class UserClientHandler implements Runnable {
 					catch (IOException e){
 						System.out.println(e.getMessage());
 					}
-						
 					
 				}
 

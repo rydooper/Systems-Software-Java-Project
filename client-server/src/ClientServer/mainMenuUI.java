@@ -161,9 +161,20 @@ public class mainMenuUI extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldInfoBtnActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
+		dataRequest = "LOGOUT";
+		buttonPressed = true;
+		UserClient.isAdmin = false;
+		try{
+			Thread.sleep(400);
+		}
+		catch(InterruptedException e){
+			System.out.println(e.getMessage());
+		}
+		dataRequest = "";
         this.dispose();
         ClientLoginUI loginScreen = new ClientLoginUI();
         loginScreen.setVisible(true);
+
         //the frame is cleared form memory and a new instance of login screen 
         //is shown
     }//GEN-LAST:event_LogOutBtnActionPerformed
@@ -185,23 +196,24 @@ public class mainMenuUI extends javax.swing.JFrame {
 			this.dispose();
 		}
 		else{
-			//errro
+			//errro pop up window goes here
 		}
+		dataRequest = "";
     }//GEN-LAST:event_allUsrStationInfoBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 		this.dispose();
 		dataRequest = "WEATHER STATION SIZE";
 		buttonPressed = true;
-		StationDataDisplayUI stationScreen = new StationDataDisplayUI();
-		stationScreen.fetchNumStations();
-        stationScreen.setVisible(true);
 		try{
 			Thread.sleep(400);
 		}
 		catch(InterruptedException e){
 			System.out.println(e.getMessage());
 		}
+		StationDataDisplayUI stationScreen = new StationDataDisplayUI();
+		stationScreen.fetchNumStations();
+        stationScreen.setVisible(true);
 		dataRequest = "";
     }//GEN-LAST:event_jButton1ActionPerformed
 
