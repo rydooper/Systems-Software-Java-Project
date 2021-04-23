@@ -6,6 +6,10 @@
 package ClientServer;
 
 import java.io.IOException;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Popup;
+import javax.swing.PopupFactory;
 
 /**
  *
@@ -196,7 +200,12 @@ public class mainMenuUI extends javax.swing.JFrame {
 			this.dispose();
 		}
 		else{
-			//errro pop up window goes here
+			System.out.println("not an admin, go away");
+			PopupFactory pf = new PopupFactory();
+			JFrame f = new JFrame("anything");
+			JPanel p2 = new JPanel();
+			Popup p = pf.getPopup(f, p2, 180, 180);
+			p.show();
 		}
 		dataRequest = "";
     }//GEN-LAST:event_allUsrStationInfoBtnActionPerformed
@@ -243,7 +252,6 @@ public class mainMenuUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(mainMenuUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
