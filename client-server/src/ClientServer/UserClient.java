@@ -9,6 +9,7 @@ public class UserClient implements Runnable {
 	static String[] fieldData;
 	static int numWeatherStations;
 	static boolean isAdmin;
+	static String allUsersString;
 	InetAddress address;
     Socket server;
     DataOutputStream outToServer;
@@ -68,6 +69,7 @@ public class UserClient implements Runnable {
 
 								case "ADMIN INFO":
 									isAdmin = inFromServer.readBoolean();
+									allUsersString = inFromServer.readUTF();
 									break;
 							}
 						}

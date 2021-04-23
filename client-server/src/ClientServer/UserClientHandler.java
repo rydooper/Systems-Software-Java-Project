@@ -107,6 +107,22 @@ public class UserClientHandler implements Runnable {
 					catch(IOException e){
 						System.out.println(e.getMessage());
 					}
+					String listUsername_file = "usernames.txt";
+					readFile usernameFile = new readFile(listUsername_file);
+
+					try {
+						String[] usernameLines = usernameFile.openFile();
+						String allUsernameString = "";
+						for (String username : usernameLines){
+							allUsernameString += username + "\n";
+						}
+						outToClient.writeUTF(allUsernameString);
+					} 
+					catch (IOException e){
+						System.out.println(e.getMessage());
+					}
+						
+					
 				}
 
 			}

@@ -179,9 +179,10 @@ public class mainMenuUI extends javax.swing.JFrame {
 			System.out.println(e.getMessage());
 		}
 		if(UserClient.isAdmin){
-			this.dispose();
         	AllDataUI allDataScreen = new AllDataUI();
+			allDataScreen.fetchUserData();
         	allDataScreen.setVisible(true);
+			this.dispose();
 		}
 		else{
 			//errro

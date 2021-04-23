@@ -139,6 +139,10 @@ public class AllDataUI extends javax.swing.JFrame {
         menuScreen.setVisible(true);
     }//GEN-LAST:event_backBtnActionPerformed
 
+	public void fetchUserData(){
+		usersTextArea.setText(UserClient.allUsersString);
+	}
+
     /**
      * @param args the command line arguments
      */
