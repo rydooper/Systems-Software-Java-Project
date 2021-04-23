@@ -172,6 +172,12 @@ public class mainMenuUI extends javax.swing.JFrame {
 		//admin check
 		dataRequest = "ADMIN INFO";
 		buttonPressed = true;
+		try{
+			Thread.sleep(400);
+		}
+		catch(InterruptedException e){
+			System.out.println(e.getMessage());
+		}
 		if(UserClient.isAdmin){
 			this.dispose();
         	AllDataUI allDataScreen = new AllDataUI();
