@@ -196,7 +196,7 @@ public class mainMenuUI extends javax.swing.JFrame {
 			this.dispose();
 		}
 		else{
-			System.out.println("not an admin, go away");
+			
                         JOptionPane.showMessageDialog(null, "Only Admins have access to user information");
 		}
 		dataRequest = "";
@@ -214,7 +214,7 @@ public class mainMenuUI extends javax.swing.JFrame {
 		}
 		StationDataDisplayUI stationScreen = new StationDataDisplayUI();
 		stationScreen.fetchNumStations();
-        stationScreen.setVisible(true);
+                stationScreen.setVisible(true);
 		dataRequest = "";
     }//GEN-LAST:event_viewWSActionPerformed
 

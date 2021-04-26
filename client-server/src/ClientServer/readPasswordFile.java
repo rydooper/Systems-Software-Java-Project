@@ -10,6 +10,8 @@ import java.util.*;
  *
  * @author ryder
  */
+
+//this code has been adapated from https://www.homeandlearn.co.uk/java/read_a_textfile_in_java.html (Carney, n.d)
 public class readPasswordFile {
      private String path;
     
