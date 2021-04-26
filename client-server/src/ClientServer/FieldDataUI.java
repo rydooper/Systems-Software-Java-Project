@@ -55,6 +55,7 @@ public class FieldDataUI extends javax.swing.JFrame {
         });
 
         cropTypeInput.setEditable(false);
+        cropTypeInput.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
         cropTypeInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cropTypeInputActionPerformed(evt);
@@ -70,6 +71,7 @@ public class FieldDataUI extends javax.swing.JFrame {
         areaLabel.setMaximumSize(new java.awt.Dimension(70, 15));
 
         areaInput.setEditable(false);
+        areaInput.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
         areaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 areaInputActionPerformed(evt);
@@ -77,6 +79,7 @@ public class FieldDataUI extends javax.swing.JFrame {
         });
 
         plantingInput.setEditable(false);
+        plantingInput.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
         plantingInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plantingInputActionPerformed(evt);
@@ -92,6 +95,7 @@ public class FieldDataUI extends javax.swing.JFrame {
         plantingLabel.setMaximumSize(new java.awt.Dimension(70, 15));
 
         harvestInput.setEditable(false);
+        harvestInput.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
         harvestInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 harvestInputActionPerformed(evt);

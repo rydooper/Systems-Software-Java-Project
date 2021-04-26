@@ -8,11 +8,19 @@
 package ClientServer;
 
 import static java.lang.String.valueOf;
+import java.text.DecimalFormat;
 import java.util.*;
+import javafx.application.Application;
 /**
  *
  * @author nivee
  */
+class Graph {
+    public static void beginGraph() {
+        System.out.println("In Graph");
+        Application.launch(Chart.class, new String[] {}); //method of calling the Application class to display the graph was adapted from Stack Overflow (https://stackoverflow.com/questions/25873769/launch-javafx-application-from-another-class)
+    }
+}
 public class StationDataDisplayUI extends javax.swing.JFrame {
 
 	
@@ -49,9 +57,11 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         graphBtn = new javax.swing.JButton();
         stationDropBtn = new javax.swing.JComboBox<>();
-        lonBox = new javax.swing.JTextField();
-        latBox = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        latBox = new javax.swing.JTextField();
+        lonBox = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,7 +87,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         cropLabel.setMaximumSize(new java.awt.Dimension(65, 15));
 
         humidityLabel.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        humidityLabel.setText("Humidity:");
+        humidityLabel.setText("Humidity (%):");
         humidityLabel.setMaximumSize(new java.awt.Dimension(65, 15));
         humidityLabel.setPreferredSize(new java.awt.Dimension(65, 15));
 
@@ -86,7 +96,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         humidityInput.setText("n");
 
         windLabel.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        windLabel.setText("Wind:");
+        windLabel.setText("Wind (mph):");
         windLabel.setMaximumSize(new java.awt.Dimension(65, 15));
         windLabel.setPreferredSize(new java.awt.Dimension(65, 15));
 
@@ -104,11 +114,10 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         precipitationInput.setText("n");
 
         precipitationLabel.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
-        precipitationLabel.setText("Precipitation:");
+        precipitationLabel.setText("Precipitation (%):");
         precipitationLabel.setMaximumSize(new java.awt.Dimension(65, 15));
 
         fieldNumBox.setEditable(false);
-        fieldNumBox.setBackground(new java.awt.Color(240, 240, 240));
         fieldNumBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
@@ -119,27 +128,27 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(cropLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(windLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(precipitationLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(humidityLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(precipitationLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(windLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(humidityLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cropLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldNumBox)
                     .addComponent(precipitationInput)
                     .addComponent(windInput)
                     .addComponent(humidityInput)
                     .addComponent(stationNoInput, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cropLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stationNoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,10 +168,11 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(precipitationInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(precipitationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         graphBtn.setBackground(new java.awt.Color(7, 138, 59));
+        graphBtn.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
         graphBtn.setForeground(new java.awt.Color(240, 240, 240));
         graphBtn.setText("View Graph");
         graphBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -178,67 +188,84 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
             }
         });
 
-        lonBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        jLabel2.setText("Latitude (Degree):");
 
+        latBox.setEditable(false);
         latBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
-        jLabel2.setText("lat:");
+        lonBox.setEditable(false);
+        lonBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        jLabel3.setText("Longtitude (Degree):");
+
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
+        jLabel4.setText("GPS of Station");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(54, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(backBtn)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(latBox, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                                .addComponent(lonBox)))))
-                .addGap(18, 29, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(135, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addContainerGap(485, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(stationDropBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(118, 118, 118))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(stationTitleLabel)
-                        .addGap(171, 171, 171))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(graphBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))))
+                .addComponent(stationTitleLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stationDropBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(graphBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lonBox)
+                    .addComponent(latBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(backBtn)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(lonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(latBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(stationTitleLabel)
-                        .addGap(45, 45, 45)
-                        .addComponent(stationDropBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(graphBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(36, 36, 36)
+                .addComponent(stationTitleLabel)
+                .addGap(18, 18, 18)
+                .addComponent(stationDropBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(graphBtn)
+                .addGap(43, 43, 43)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(latBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -254,6 +281,8 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
 
     private void graphBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graphBtnActionPerformed
         // TODO add your handling code here:
+        Graph graph = new Graph();
+        graph.beginGraph();
     }//GEN-LAST:event_graphBtnActionPerformed
 
     private void stationDropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stationDropBtnActionPerformed
@@ -281,8 +310,13 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
 			double lon = (RandGen.nextInt(100) + (fieldNum*100));
 			double newLon = lon/10000;
 			lon = dLon + newLon;
-			latBox.setText(valueOf(lat));
-			lonBox.setText(valueOf(lon));
+                        DecimalFormat Rounded = new DecimalFormat("##.00000");
+                        String latRounded = Rounded.format(lat);
+                        String lonRounded = Rounded.format(lon);
+			/*latBox.setText(valueOf(lat));
+			lonBox.setText(valueOf(lon));*/
+                        latBox.setText(latRounded);
+                        lonBox.setText(lonRounded);
 
 			
 			fieldNumBox.setText(fieldNum.toString());
@@ -353,19 +387,21 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
     private javax.swing.JLabel cropLabel;
     private javax.swing.JTextField fieldNumBox;
     private javax.swing.JButton graphBtn;
-    private javax.swing.JTextField humidityInput;
+    public static javax.swing.JTextField humidityInput;
     private javax.swing.JLabel humidityLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField latBox;
     private javax.swing.JTextField lonBox;
-    private javax.swing.JTextField precipitationInput;
+    public static javax.swing.JTextField precipitationInput;
     private javax.swing.JLabel precipitationLabel;
     private javax.swing.JComboBox<String> stationDropBtn;
-    private javax.swing.JTextField stationNoInput;
+    public static javax.swing.JTextField stationNoInput;
     private javax.swing.JLabel stationTitleLabel;
-    private javax.swing.JTextField windInput;
+    public static javax.swing.JTextField windInput;
     private javax.swing.JLabel windLabel;
     // End of variables declaration//GEN-END:variables
 }

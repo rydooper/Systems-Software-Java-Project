@@ -40,6 +40,7 @@ public class AllDataUI extends javax.swing.JFrame {
         titleLabel.setText(" All Users");
 
         usersTextArea.setColumns(1);
+        usersTextArea.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 13)); // NOI18N
         usersTextArea.setRows(5);
         jScrollPane1.setViewportView(usersTextArea);
 
