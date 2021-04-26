@@ -16,9 +16,13 @@ import javafx.application.Application;
  * @author nivee
  */
 class Graph {
-    public static void beginGraph() {
-        System.out.println("In Graph");
-        Application.launch(Chart.class, new String[] {}); //method of calling the Application class to display the graph was adapted from Stack Overflow (https://stackoverflow.com/questions/25873769/launch-javafx-application-from-another-class)
+    public static void beginGraph() throws IllegalStateException { //method to handle the error (IllegalStateException) (Application can only be launched once) was adapted from Stack Overflow (https://stackoverflow.com/questions/1075895/how-can-i-catch-all-the-exceptions-that-will-be-thrown-through-reading-and-writi)
+        try {
+            Application.launch(Chart.class, new String[] {});
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        //Application.launch(Chart.class, new String[] {}); //method of calling the Application class to display the graph was adapted from Stack Overflow (https://stackoverflow.com/questions/25873769/launch-javafx-application-from-another-class)
     }
 }
 public class StationDataDisplayUI extends javax.swing.JFrame {
@@ -310,7 +314,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
 			double lon = (RandGen.nextInt(100) + (fieldNum*100));
 			double newLon = lon/10000;
 			lon = dLon + newLon;
-                        DecimalFormat Rounded = new DecimalFormat("##.00000");
+                        DecimalFormat Rounded = new DecimalFormat("##.00000"); //method of rounding the coordinates was adapted from Stack Overflow (https://stackoverflow.com/questions/11701399/round-up-to-2-decimal-places-in-java)
                         String latRounded = Rounded.format(lat);
                         String lonRounded = Rounded.format(lon);
 			/*latBox.setText(valueOf(lat));
