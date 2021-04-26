@@ -7,6 +7,7 @@
  */
 package ClientServer;
 
+import static java.lang.String.valueOf;
 import java.util.*;
 /**
  *
@@ -48,8 +49,8 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         graphBtn = new javax.swing.JButton();
         stationDropBtn = new javax.swing.JComboBox<>();
-        longBox = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        lonBox = new javax.swing.JTextField();
+        latBox = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,18 +119,14 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(26, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(cropLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(windLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(precipitationLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(humidityLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(cropLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(windLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precipitationLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(humidityLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(fieldNumBox)
@@ -181,9 +178,9 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
             }
         });
 
-        longBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        lonBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
+        latBox.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 11)); // NOI18N
 
         jLabel2.setText("lat:");
 
@@ -201,8 +198,8 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(backBtn)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                                .addComponent(longBox)))))
+                                .addComponent(latBox, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                                .addComponent(lonBox)))))
                 .addGap(18, 29, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(62, Short.MAX_VALUE))
@@ -227,11 +224,11 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(longBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lonBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(latBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -260,6 +257,7 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
     }//GEN-LAST:event_graphBtnActionPerformed
 
     private void stationDropBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stationDropBtnActionPerformed
+		Random RandGen = new  Random();
 		Integer index = stationDropBtn.getSelectedIndex(); 
 		index++;
 		if(!(index == 0)){
@@ -275,6 +273,18 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
 			
 			Integer fieldNum = (index-1) / 3;
 			fieldNum++;
+			
+			double dLat = 51.942, dLon = -3.452;
+			double lat = (RandGen.nextInt(100) + (fieldNum*100));
+			double newLat = lat/10000;
+			lat = dLat + newLat;
+			double lon = (RandGen.nextInt(100) + (fieldNum*100));
+			double newLon = lon/10000;
+			lon = dLon + newLon;
+			latBox.setText(valueOf(lat));
+			lonBox.setText(valueOf(lon));
+
+			
 			fieldNumBox.setText(fieldNum.toString());
 			stationNoInput.setText(index.toString());
 			humidityInput.setText(WSData.get(index)[0]);
@@ -348,8 +358,8 @@ public class StationDataDisplayUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField longBox;
+    private javax.swing.JTextField latBox;
+    private javax.swing.JTextField lonBox;
     private javax.swing.JTextField precipitationInput;
     private javax.swing.JLabel precipitationLabel;
     private javax.swing.JComboBox<String> stationDropBtn;
