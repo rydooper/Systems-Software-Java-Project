@@ -3,4 +3,4 @@ Repository for all the code and files related to our Year 2 Systems Software Mod
 
 This is the final program that our group made! :)
 
-Group members were: Ryder Franklin (me), Niveetha Sivaruban, Luke Aldred and Alexander Burke.
+Group members were: Ryder Franklin, Niveetha Sivaruban, Luke Aldred and Alexander Burke.
